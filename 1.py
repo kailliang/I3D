@@ -82,12 +82,12 @@ def train(model, data_loader, train_optimizer):
         train_optimizer.zero_grad()
         pred = model(video)
         loss = loss_criterion(pred, label)
-        total_loss += loss.item() * video[0].size(0)
+        total_loss += loss.item() * video.size(0)
         total_acc += (torch.eq(pred.argmax(dim=-1), label)).sum().item()
         loss.backward()
         train_optimizer.step()
 
-        total_num += video[0].size(0)
+        total_num += video.size(0)
         train_bar.set_description('Train Epoch: [{}/{}] Loss: {:.4f} Acc: {:.2f}%'
                                   .format(epoch, epochs, total_loss / total_num, total_acc * 100 / total_num))
 
@@ -118,7 +118,7 @@ def val(model, data_loader):
             total_top_1 += (torch.eq(pred.argmax(dim=-1), label)).sum().item()
             total_top_5 += torch.any(torch.eq(pred.topk(k=2, dim=-1).indices, label.unsqueeze(dim=-1)),
                                      dim=-1).sum().item()
-            total_num += video[0].size(0)
+            total_num += video.size(0)
             test_bar.set_description('Test Epoch: [{}/{}] | Top-1:{:.2f}% | Top-5:{:.2f}%'
                                      .format(epoch, epochs, total_top_1 * 100 / total_num,
                                              total_top_5 * 100 / total_num))
