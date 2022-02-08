@@ -33,7 +33,7 @@ clip_duration = (num_frames * sampling_rate) / frames_per_second
 num_classes = 3
 
 data_root = "/home/k/kai/data/all"
-batch_size = 6
+batch_size = 4
 epochs = 50
 save_root = '/home/k/kai/CheckPoints/i3d_1'
 
