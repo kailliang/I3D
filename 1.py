@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 import torch
 from pytorchvideo.data import make_clip_sampler, labeled_video_dataset
-from pytorchvideo.models import create_slowfast
+#from pytorchvideo.models import create_slowfast
 from torch.backends import cudnn
 from torch.nn import CrossEntropyLoss
 from torch.optim import Adam, SGD
@@ -152,7 +152,7 @@ test_loader = DataLoader(test_data, batch_size=batch_size, num_workers=8)
 
 # model define, loss setup and optimizer config
 #slow_fast = create_slowfast(model_num_class=num_classes).cuda()
-model_name = 'i3d'
+model_name = 'i3d_r50'
 model = torch.hub.load('facebookresearch/pytorchvideo:main', model_name, pretrained=True).cuda()
 
 
