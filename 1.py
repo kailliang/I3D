@@ -156,7 +156,7 @@ model_name = 'i3d'
 model = torch.hub.load('facebookresearch/pytorchvideo:main', model_name, pretrained=True).cuda()
 
 
-#model.blocks[5].proj = torch.nn.Linear(in_features=2048, out_features=3, bias=True).cuda()
+model.blocks[6].proj = torch.nn.Linear(in_features=2048, out_features=3, bias=True).cuda()
 
 #model.load_state_dict(torch.load('/kaggle/input/pretrained-weight/Batch_10_02.pth', 'cuda'))
 
