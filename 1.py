@@ -33,7 +33,7 @@ clip_duration = (num_frames * sampling_rate) / frames_per_second
 num_classes = 3
 
 data_root = "/home/k/kai/data/all"
-batch_size = 8
+batch_size = 6
 epochs = 50
 save_root = '/home/k/kai/CheckPoints/i3d_1'
 
@@ -165,7 +165,7 @@ model.blocks[6].proj = torch.nn.Linear(in_features=2048, out_features=3, bias=Tr
 
 loss_criterion = CrossEntropyLoss()
 # optimizer = Adam(slow_fast.parameters(), lr=1e-1)
-optimizer = SGD(slow_fast.parameters(), lr=0.02, momentum=0.9,weight_decay=0.001)
+optimizer = SGD(model.parameters(), lr=0.02, momentum=0.9,weight_decay=0.001)
 
 
 # optimizer = SGD([{'params':slow_fast.parameters(),'lr':args.learning_rate},{'params':model.head.parameters(),'lr':args.learning_rate}],
